@@ -47,14 +47,28 @@ class ResidentController extends Controller
         $contact = new Resident([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
+            'middle_name' => $request->get('middle_name'),
+            'extention_name' => $request->get('extention_name'),
+            'birthday' => $request->get('birthday'),
+            'rel_head' => $request->get('rel_head'),
+            'marital_status' => $request->get('marital_status'),
+            'address_1' => $request->get('address_1'),
+            'address_2' => $request->get('address_2'),
+            'mobile_num' => $request->get('mobile_num'),
+            'telephone_num' => $request->get('telephone_num'),
+            'telephone_num' => $request->get('telephone_num'),
             'email' => $request->get('email'),
-            'job_title' => $request->get('job_title'),
-            'city' => $request->get('city'),
-            'country' => $request->get('country')
+            'education' => $request->get('education'),
+            'height' => $request->get('height'),
+            'weight' => $request->get('weight'),
+            'business_name' => $request->get('business_name'),
+            'house_built' => $request->get('house_built'),
+            'employment_record' => $request->get('employment_record'),
+            
         ]);
         $contact->save();
         echo 'saved';
-        return redirect('/contacts')->with('success', 'Contact saved!');
+        return redirect('/resident')->with('success', 'Contact saved!');
     }
 
     /**
@@ -99,6 +113,7 @@ class ResidentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $resident = Resident::find($id);
+        $resident->delete();
     }
 }
