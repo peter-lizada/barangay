@@ -44,7 +44,7 @@ class ResidentController extends Controller
             'last_name'=>'required',
         ]);
 
-        $contact = new Resident([
+        $resident = new Resident([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
             'middle_name' => $request->get('middle_name'),
@@ -66,8 +66,8 @@ class ResidentController extends Controller
             'employment_record' => $request->get('employment_record'),
             
         ]);
-        $contact->save();
-        echo 'saved';
+        $resident->save();
+        
         return redirect('/resident')->with('success', 'Contact saved!');
     }
 
@@ -90,7 +90,8 @@ class ResidentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $resident = Resident::find($id);
+        return view('resident.edit', compact('resident')); 
     }
 
     /**
@@ -102,7 +103,34 @@ class ResidentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+        ]);
+
+        $resident = Resident::find($id);
+        $resident->first_name = $request->get('first_name');
+        $resident->last_name = $request->get('last_name');
+        $resident->middle_name = $request->get('middle_name');
+        $resident->extention_name = $request->get('extention_name');
+        $resident->birthday = $request->get('birthday');
+        $resident->rel_head = $request->get('rel_head');
+        $resident->marital_status = $request->get('marital_status');
+        $resident->address_1 = $request->get('address_1');
+        $resident->address_2 = $request->get('address_2');
+        $resident->mobile_num = $request->get('mobile_num');
+        $resident->telephone_num = $request->get('telephone_num');
+        $resident->telephone_num = $request->get('telephone_num');
+        $resident->email = $request->get('email');
+        $resident->education = $request->get('education');
+        $resident->height = $request->get('height');
+        $resident->weight = $request->get('weight');
+        $resident->business_name = $request->get('business_name');
+        $resident->house_built = $request->get('house_built');
+        $resident->employment_record = $request->get('employment_record');
+            
+        $resident->save();
+        return redirect('/resident')->with('success', 'Contact updated!');
     }
 
     /**
@@ -115,5 +143,7 @@ class ResidentController extends Controller
     {
         $resident = Resident::find($id);
         $resident->delete();
+
+        return redirect('/resident')->with('success', 'Contact Deleted!');
     }
 }
