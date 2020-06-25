@@ -12,11 +12,17 @@ class ResidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //
         $residents = Resident::all();
-
+        
         return view('resident.index', compact('residents'));
     }
 
