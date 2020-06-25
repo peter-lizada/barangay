@@ -1,9 +1,10 @@
-<!--@extends('base')-->
-@extends('layouts.app')
+@extends('layouts.app', ['activePage' => 'test', 'titlePage' =>'Add Contact'])
 @section('content')
+<div class="content">
+<div class="container-fluid">
 <div class="row">
- <div class="col-sm-8 offset-sm-2">
-    <h1 class="display-3">Add a contact</h1>
+
+ <div class="col-sm-12 ">
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -117,5 +118,5 @@
       </form>
   </div>
 </div>
-</div>
+</div></div>
 @endsection
