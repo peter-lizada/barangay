@@ -1,0 +1,13 @@
+.form-group{
+    margin: 20px 0px;
+    padding-right: 4vw;
+}
+
+.form-group .bmd-label-static {
+    left: 1vw;
+}
+
+.navbar .navbar-brand{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
